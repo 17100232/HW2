@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'movies#index'
 
+
+  get 'movies/update_existing' => 'movies#update_existing', as: :update_existing
+  put 'movies/update_existing' => 'movies#update_existing_helper'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

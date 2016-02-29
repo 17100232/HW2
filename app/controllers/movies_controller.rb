@@ -42,6 +42,17 @@ class MoviesController < ApplicationController
     flash[:notice] = "#{@movie.title} was successfully updated."
     redirect_to movie_path(@movie)
   end
+  
+  def update_existing
+    
+  end
+  
+  def update_existing_helper
+    @movie = Movie.find_by_title(params[:movie][:title_old])
+    @movie.update_attributes!(movie_params)
+    flash[:notice] = "#{@movie.title} was successfully updated."
+    redirect_to movies_path
+  end
 
   def destroy
     @movie = Movie.find(params[:id])
