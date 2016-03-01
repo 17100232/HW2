@@ -5,9 +5,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'movies#index'
 
-
+  
   get 'movies/update_existing' => 'movies#update_existing', as: :update_existing
   put 'movies/update_existing' => 'movies#update_existing_helper'
+  
+  get 'movies/destroy_by_title' => 'movies#destroy_by_title', as: :destroy_by_title
+  post 'movies/destroy_by_title' => 'movies#deleteByTitle', as: :deleteByTitle
+
+  
+  get 'movies/destroy_by_rating' => 'movies#destroy_by_rating', as: :destroy_by_rating
+  post 'movies/destroy_by_rating' => 'movies#deleteByRating', as: :deleteByRating
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

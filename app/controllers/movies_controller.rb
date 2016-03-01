@@ -60,5 +60,35 @@ class MoviesController < ApplicationController
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
   end
+  
+  def destroy_by_title
+    
+  end
+  
+  def destroy_by_rating
+    
+  end
+  
+  def deleteByTitle
+    @movie = Movie.find_by_title(params[:movie][:title_old])
+    if @movie
+      @movie.destroy
+      flash[:notice] = "Movie '#{@movie.title}' deleted."
+    end
+    redirect_to movies_path
+  end
+  
+  def deleteByRating
+    @movie = Movie.where(:rating => params[:movie][:rating])
+    if @movie
+      @movie.each do |iter|
+          iter.destroy
+      end
+      flash[:notice] = "Movie(s) with rating '#{params[:rating]}' deleted."
+    end  
+    redirect_to movies_path
+  end
+  
+
 
 end

@@ -1,0 +1,7 @@
+%h1 Delete Existing Movie
+
+= form_tag deleteByTitle_path, :method => :post do
+  = label :movie, :title, 'Search for existing Title'
+  = text_field :movie, 'title_old'
+  
+  = submit_tag 'Delete Movie'
